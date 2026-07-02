@@ -10,7 +10,7 @@ export function ConfirmDialog({
   description,
   children,
   confirmLabel,
-  confirmClassName,
+  confirmClassName
   onConfirm,
   loading,
 }) {
