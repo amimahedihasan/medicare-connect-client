@@ -267,7 +267,54 @@ export default function AboutPage() {
       <PlatformStats />
 
       {/* Team */}
-   
+      <section id="team" className="py-20 lg:py-28">
+        <Container>
+          <SectionTitle
+            eyebrow="The Visionaries"
+            title="Leading the transition to digital health"
+            description="Our leadership team combines healthcare expertise with technology-driven innovation."
+            align="center"
+          />
+
+          <div className="mt-12 grid gap-7 md:grid-cols-3 lg:mt-16">
+            {team.map((member, index) => (
+              <motion.article
+                key={member.name}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
+                <Card className="group overflow-hidden border-border/60 p-0 ring-0! shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                  <div className="relative w-full overflow-hidden bg-muted">
+                    <AspectRatio ratio={4 / 3}>
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover object-center transition duration-500 ease-out group-hover:scale-[1.03]"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 h-12 bg-linear-to-t from-black/15 to-transparent" />
+                    </AspectRatio>
+                  </div>
+
+                  <CardContent className="p-6">
+                    <h3 className="text-lg font-bold tracking-tight">
+                      {member.name}
+                    </h3>
+                    <p className="mt-1 text-[11px] font-semibold uppercase tracking-widest text-primary">
+                      {member.role}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {member.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.article>
+            ))}
+          </div>
+        </Container>
+      </section>
 
       {/* CTA */}
       <section className="pb-20 lg:pb-28">
